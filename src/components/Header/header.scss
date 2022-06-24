@@ -1,0 +1,26 @@
+
+.header-container{
+  height:18rem;
+  background-image: url('./../../../images/bg-desktop-light.jpg');
+  background-size: cover;
+}
+
+.navbar-container {
+  width:30%;
+  margin:auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 4rem;
+
+  &--logo {
+    font-size: 2rem;
+    font-weight: bolder;
+    color:white;
+    letter-spacing: 0.4rem;
+  }
+
+  &--img {
+    cursor: pointer;
+  }
+}
