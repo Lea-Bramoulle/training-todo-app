@@ -1,3 +1,5 @@
+/* eslint-disable default-param-last */
+/* eslint-disable no-case-declarations */
 /* eslint-disable no-underscore-dangle */
 import { createStore } from 'redux';
 
