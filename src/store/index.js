@@ -3,7 +3,9 @@
 /* eslint-disable no-underscore-dangle */
 import { createStore } from 'redux';
 
-import { CHANGE_TASK_STATUS } from 'src/store/action';
+import { CHANGE_TASK_STATUS, CHANGE_INPUT_VALUE, CREATE_NEW_TASK } from 'src/store/action';
+
+import { getHighestId } from './selectors';
 
 const initialState = {
   tasks: [
@@ -48,7 +50,7 @@ const initialState = {
       done: true,
     },
   ],
-  inputValue: ' ',
+  inputValue: '',
 };
 
 const reducer = (state = initialState, action) => {
@@ -61,6 +63,24 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         tasks: newTasksArray,
+      };
+    case CHANGE_INPUT_VALUE:
+      return {
+        ...state,
+        inputValue: action.newValue,
+      };
+    case CREATE_NEW_TASK:
+      return {
+        ...state,
+        tasks: [
+          ...state.tasks,
+          {
+            id: getHighestId(state) + 1,
+            content: state.inputValue,
+            done: false,
+          },
+        ],
+        inputValue: '',
       };
     default:
       return state;

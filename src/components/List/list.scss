@@ -24,6 +24,7 @@
   &--element {
     display: flex;
     padding: 1.5rem 3rem;
+    cursor: pointer;
   }
 
   &--element:not(:last-child) {
