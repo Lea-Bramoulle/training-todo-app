@@ -2,7 +2,9 @@ import './footer.scss';
 
 function Footer() {
   return (
-    <p>coucou footer</p>
+    <section className='footer-container'>
+      <p>Training Todo App - © Léa Bramoullé - 2022 </p>
+    </section>
   );
 }
 

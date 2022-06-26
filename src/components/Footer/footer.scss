@@ -1,0 +1,9 @@
+@use 'src/styles/vars';
+
+.footer-container {
+    padding-top: 2rem;
+    display: flex;
+    justify-content: center;
+    color: vars.$VeryDarkGrayiDark;
+    font-size: 0.8rem;
+}
