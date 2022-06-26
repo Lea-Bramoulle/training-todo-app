@@ -2,7 +2,7 @@
 /* eslint-disable import/no-useless-path-segments */
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect  } from 'react';
-import { changeTaskStatus, filterActiveTasks, filterCompletedTasks, filterAllTasks } from 'src/store/action';
+import { changeTaskStatus, filterActiveTasks, filterCompletedTasks, filterAllTasks, clearCompletedTasks } from 'src/store/action';
 import './list.scss';
 
 function List() {
@@ -42,11 +42,11 @@ function List() {
       <div className="todo-list-container--footer">
         <p>{tasksLeft} tasks left</p>
         <div className="todo-list-container--footer-btns">
-          <p onClick={() => dispatch(filterAllTasks())}>All</p>
           <p onClick={() => dispatch(filterActiveTasks())}> Active</p>
           <p onClick={() => dispatch(filterCompletedTasks())}>Completed</p>
+          <p onClick={() => dispatch(filterAllTasks())}>All</p>
         </div>
-        <p>Clear completed</p>
+        <p onClick={() => dispatch(clearCompletedTasks())}>Clear completed</p>
       </div>
     </div>
   );

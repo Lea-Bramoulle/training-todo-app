@@ -3,7 +3,7 @@
 /* eslint-disable no-underscore-dangle */
 import { createStore } from 'redux';
 
-import { CHANGE_TASK_STATUS, CHANGE_INPUT_VALUE, CREATE_NEW_TASK, FILTER_ACTIVE_TASKS, FILTER_COMPLETED_TASKS, FILTER_ALL_TASKS } from 'src/store/action';
+import { CHANGE_TASK_STATUS, CHANGE_INPUT_VALUE, CREATE_NEW_TASK, FILTER_ACTIVE_TASKS, FILTER_COMPLETED_TASKS, FILTER_ALL_TASKS, CLEAR_COMPLETED_TASKS } from 'src/store/action';
 
 import { getHighestId } from './selectors';
 
@@ -87,6 +87,12 @@ const reducer = (state = initialState, action) => {
         return {
           ...state,
           filteredTasks: state.tasks,
+        };
+      case CLEAR_COMPLETED_TASKS:
+        return {
+          ...state,
+          tasks: state.tasks.filter((task) => task.done === false),
+          filteredTasks: state.tasks.filter((task) => task.done === false),
         };
     default:
       return state;
