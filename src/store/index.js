@@ -3,7 +3,7 @@
 /* eslint-disable no-underscore-dangle */
 import { createStore } from 'redux';
 
-import { CHANGE_TASK_STATUS, CHANGE_INPUT_VALUE, CREATE_NEW_TASK } from 'src/store/action';
+import { CHANGE_TASK_STATUS, CHANGE_INPUT_VALUE, CREATE_NEW_TASK, FILTER_ACTIVE_TASKS, FILTER_COMPLETED_TASKS, FILTER_ALL_TASKS } from 'src/store/action';
 
 import { getHighestId } from './selectors';
 
@@ -29,28 +29,10 @@ const initialState = {
       content: 'sortir les mouches',
       done: false,
     },
-    {
-      id: 5,
-      content: 'sortir les mouches',
-      done: false,
-    },
-    {
-      id: 6,
-      content: 'sortir les mouches',
-      done: false,
-    },
-    {
-      id: 7,
-      content: 'sortir les mouches',
-      done: false,
-    },
-    {
-      id: 8,
-      content: 'sortir les mouches',
-      done: true,
-    },
   ],
   inputValue: '',
+  tasksLeft:0,
+  filteredTasks: [],
 };
 
 const reducer = (state = initialState, action) => {
@@ -63,6 +45,7 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         tasks: newTasksArray,
+        filteredTasks: newTasksArray,
       };
     case CHANGE_INPUT_VALUE:
       return {
@@ -80,8 +63,31 @@ const reducer = (state = initialState, action) => {
             done: false,
           },
         ],
+        filteredTasks: [
+          ...state.tasks,
+          {
+            id: getHighestId(state) + 1,
+            content: state.inputValue,
+            done: false,
+          },
+        ],
         inputValue: '',
       };
+      case FILTER_ACTIVE_TASKS:
+        return {
+          ...state,
+          filteredTasks: state.tasks.filter((task) => task.done === false),
+        };
+      case FILTER_COMPLETED_TASKS:
+        return {
+          ...state,
+          filteredTasks: state.tasks.filter((task) => task.done === true),
+        };
+      case FILTER_ALL_TASKS:
+        return {
+          ...state,
+          filteredTasks: state.tasks,
+        };
     default:
       return state;
   }

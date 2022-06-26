@@ -1,31 +1,18 @@
 .todo-list-container {
   background-color: #fff;
-  width:30%;
+  width:35%;
   height:58vh;
   margin: 1rem auto;
-  padding: 2rem 0;
+  padding: 1rem 0 2rem 0;
   border-radius: 8px;
   box-shadow: hsl(234, 39%, 85%) 0px 48px 100px 0px;
-  overflow-y: scroll;
-  scrollbar-color:   linear-gradient(hsla(192, 100%, 67%, 0.5), hsl(280, 87%, 65%, 0.5)) hsl(15deg 32% 93%);
 
-  &::-webkit-scrollbar {
-    width: 10px; /* Mostly for vertical scrollbars */
-    height: 10px; /* Mostly for horizontal scrollbars */
-  }
-  &::-webkit-scrollbar-thumb { /* Foreground */
-    border-top: 4px solid hsl(15deg 32% 93%);
-    background:  linear-gradient(hsl(192, 100%, 67%, 0.5), hsl(280, 87%, 65%, 0.5));
-  }
-  &::-webkit-scrollbar-track { /* Background */
-    background: hsl(15deg 32% 93%);
-  }
-
-  &--element {
-    display: flex;
-    padding: 1.5rem 3rem;
-    cursor: pointer;
-  }
+  
+    &--element {
+      display: flex;
+      padding: 1.5rem 3rem;
+      cursor: pointer;
+    }
 
   &--element:not(:last-child) {
     border-bottom: solid 1px hsl(234, 39%, 85%);
@@ -37,6 +24,40 @@
     height:1rem;
     border-radius: 50%;
     margin-right: 1rem;
+  }
+
+  &--tasks {
+    height: 95%;
+    overflow-y: scroll;
+    scrollbar-color:   linear-gradient(hsla(192, 100%, 67%, 0.5), hsl(280, 87%, 65%, 0.5)) hsl(15deg 32% 93%);
+  
+    &::-webkit-scrollbar {
+      width: 10px; /* Mostly for vertical scrollbars */
+      height: 10px; /* Mostly for horizontal scrollbars */
+    }
+    &::-webkit-scrollbar-thumb { /* Foreground */
+      border-top: 4px solid hsl(15deg 32% 93%);
+      background:  linear-gradient(hsl(192, 100%, 67%, 0.5), hsl(280, 87%, 65%, 0.5));
+    }
+    &::-webkit-scrollbar-track { /* Background */
+      background: hsl(15deg 32% 93%);
+    }
+    
+  }
+
+  &--footer {
+    padding:2rem;
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.8rem;
+  }
+
+  &--footer-btns {
+    display: flex;
+  }
+
+  &--footer-btns p {
+    padding: 0 0.5rem;
   }
 
 }
@@ -58,4 +79,14 @@
 
 .task-done img {
   padding:0.2rem 0 0 0.2rem;
+}
+
+.todo-list-container--footer p {
+    color: hsl(234, 34%, 77%);
+    cursor: pointer;
+
+    &:hover {
+      color:  hsl(238, 12%, 55%);
+      transition-duration: 0.5s;
+    }
 }

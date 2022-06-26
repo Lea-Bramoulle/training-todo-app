@@ -25,7 +25,6 @@ function Form() {
           value={inputValue}
           onChange={(event) => dispatch(changeInputValue(event.target.value))}
         />
-        <p>{inputValue}</p>
       </form>
     </div>
   );
