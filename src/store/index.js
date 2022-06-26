@@ -31,7 +31,6 @@ const initialState = {
     },
   ],
   inputValue: '',
-  tasksLeft:0,
   filteredTasks: [],
 };
 

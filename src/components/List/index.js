@@ -6,18 +6,19 @@ import { changeTaskStatus, filterActiveTasks, filterCompletedTasks, filterAllTas
 import './list.scss';
 
 function List() {
-  const tasks = useSelector((state) => state.filteredTasks);
+  const tasks = useSelector((state) => state.tasks);
+  const filteredTasks = useSelector((state) => state.filteredTasks);
   const dispatch = useDispatch();
 
-  let sortedTasks = [...tasks];
+  let sortedTasks = [...filteredTasks];
   sortedTasks.sort((a, b) => a.done - b.done);
 
   useEffect(() => {
     dispatch(filterAllTasks());
   },[]);
 
-  const tasksLeft = useSelector((state) => state.tasksLeft);
-
+  const tasksLeft = tasks.filter((task) => task.done=== false).length;
+  
   return (
     <div className="todo-list-container">
       <ul className="todo-list-container--tasks">
