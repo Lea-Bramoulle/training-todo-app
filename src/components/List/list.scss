@@ -111,7 +111,7 @@
     border-bottom: solid 1px vars.$VeryDarkGrayiDark;
   }
 
-  &--task {
+  &--tasks {
     scrollbar-color:   linear-gradient(hsla(192, 100%, 67%, 0.5), hsl(280, 87%, 65%, 0.5)) vars.$DarkGrayishDark;
     
     &::-webkit-scrollbar {
