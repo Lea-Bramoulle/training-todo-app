@@ -3,7 +3,7 @@
 /* eslint-disable no-underscore-dangle */
 import { createStore } from 'redux';
 
-import { CHANGE_TASK_STATUS, CHANGE_INPUT_VALUE, CREATE_NEW_TASK, FILTER_ACTIVE_TASKS, FILTER_COMPLETED_TASKS, FILTER_ALL_TASKS, CLEAR_COMPLETED_TASKS } from 'src/store/action';
+import { CHANGE_TASK_STATUS, CHANGE_INPUT_VALUE, CREATE_NEW_TASK, FILTER_ACTIVE_TASKS, FILTER_COMPLETED_TASKS, FILTER_ALL_TASKS, CLEAR_COMPLETED_TASKS, CHANGE_THEME_MODE } from 'src/store/action';
 
 import { getHighestId } from './selectors';
 
@@ -32,6 +32,7 @@ const initialState = {
   ],
   inputValue: '',
   filteredTasks: [],
+  themeMode: 'light',
 };
 
 const reducer = (state = initialState, action) => {
@@ -92,6 +93,17 @@ const reducer = (state = initialState, action) => {
           ...state,
           tasks: state.tasks.filter((task) => task.done === false),
           filteredTasks: state.tasks.filter((task) => task.done === false),
+        };
+      case CHANGE_THEME_MODE:
+        if(state.themeMode === 'light') {
+          return {
+            ...state, 
+            themeMode: 'dark',
+          }
+        } 
+        return {
+          ...state, 
+          themeMode: 'light',
         };
     default:
       return state;

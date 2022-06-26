@@ -1,3 +1,5 @@
+@use 'src/styles/vars';
+
 .form-container {
   background-color: #fff;
   width:35%;
@@ -8,17 +10,30 @@
   border-radius: 8px;
   box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
 
-  &--span {
-    border: 2px solid hsl(234, 39%, 85%);
-    width:1rem;
-    height:1rem;
-    border-radius: 50%;
-    margin-right: 1rem;
-  }
+    &--span {
+      border: 2px solid vars.$LightGrayishDark;
+      width:1rem;
+      height:1rem;
+      border-radius: 50%;
+      margin-right: 1rem;
+    }
 
-  &--input {
-    width:95%;
-    border: none;
-  }
+    &--input {
+      width:95%;
+      border: none;
+    }
 
+}
+
+#dark .form-container {
+  background-color: vars.$VeryDarkGrayishDark;
+  color: vars.$LightGrayishDark;
+
+    &--span {
+      border: 2px solid vars.$VeryDarkGrayiDark;
+    }
+
+    &--input {
+     background-color: vars.$VeryDarkGrayishDark;
+    }
 }

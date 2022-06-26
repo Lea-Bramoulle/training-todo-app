@@ -1,0 +1,13 @@
+@use 'src/styles/vars';
+
+.app {
+  width: 100%;
+  margin: 0 auto;
+  height:100vh;
+}
+
+#dark {
+  background-color: vars.$VeryDarkDark;
+}
+
+

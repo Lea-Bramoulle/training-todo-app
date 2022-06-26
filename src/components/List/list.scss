@@ -1,3 +1,5 @@
+@use 'src/styles/vars';
+
 .todo-list-container {
   background-color: #fff;
   width:35%;
@@ -5,74 +7,73 @@
   margin: 1rem auto;
   padding: 1rem 0 2rem 0;
   border-radius: 8px;
-  box-shadow: hsl(234, 39%, 85%) 0px 48px 100px 0px;
+  box-shadow: vars.$LightGrayishDark 0px 48px 100px 0px;
 
-  
     &--element {
       display: flex;
       padding: 1.5rem 3rem;
       cursor: pointer;
     }
 
-  &--element:not(:last-child) {
-    border-bottom: solid 1px hsl(234, 39%, 85%);
-  }
+    &--element:not(:last-child) {
+      border-bottom: solid 1px vars.$LightGrayishDark;
+    }
 
-  &--span {
-    border: 2px solid hsl(234, 39%, 85%);
-    width:1rem;
-    height:1rem;
-    border-radius: 50%;
-    margin-right: 1rem;
-  }
+    &--span {
+      border: 2px solid vars.$LightGrayishDark;
+      width:1rem;
+      height:1rem;
+      border-radius: 50%;
+      margin-right: 1rem;
+    }
 
-  &--tasks {
-    height: 95%;
-    overflow-y: scroll;
-    scrollbar-color:   linear-gradient(hsla(192, 100%, 67%, 0.5), hsl(280, 87%, 65%, 0.5)) hsl(15deg 32% 93%);
-  
-    &::-webkit-scrollbar {
-      width: 10px; /* Mostly for vertical scrollbars */
-      height: 10px; /* Mostly for horizontal scrollbars */
-    }
-    &::-webkit-scrollbar-thumb { /* Foreground */
-      border-top: 4px solid hsl(15deg 32% 93%);
-      background:  linear-gradient(hsl(192, 100%, 67%, 0.5), hsl(280, 87%, 65%, 0.5));
-    }
-    &::-webkit-scrollbar-track { /* Background */
-      background: hsl(15deg 32% 93%);
-    }
+    &--tasks {
+      height: 95%;
+      overflow-y: scroll;
+      scrollbar-color:   linear-gradient(hsla(192, 100%, 67%, 0.5), hsl(280, 87%, 65%, 0.5)) hsl(15deg 32% 93%);
     
-  }
+      &::-webkit-scrollbar {
+        width: 10px; /* Mostly for vertical scrollbars */
+        height: 10px; /* Mostly for horizontal scrollbars */
+      }
+      &::-webkit-scrollbar-thumb { /* Foreground */
+        border-top: 4px solid hsl(15deg 32% 93%);
+        background:  linear-gradient(hsl(192, 100%, 67%, 0.5), hsl(280, 87%, 65%, 0.5));
+      }
+      &::-webkit-scrollbar-track { /* Background */
+        background: hsl(15deg 32% 93%);
+      }
+      
+    }
 
-  &--footer {
-    padding:2rem;
-    display: flex;
-    justify-content: space-between;
-    font-size: 0.8rem;
-  }
+    &--footer {
+      padding:2rem;
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.8rem;
+    }
 
-  &--footer-btns {
-    display: flex;
-  }
+    &--footer-btns {
+      display: flex;
+    }
 
-  &--footer-btns p {
-    padding: 0 0.5rem;
-  }
+    &--footer-btns p {
+      padding: 0 0.5rem;
+    }
 
 }
 
 .todo-list-container  p {
-  color:hsl(235, 19%, 35%);
+  color: vars.$VeryDarkGrayishLight;
 }
 
 .task-done p {
-  color: hsl(236, 9%, 61%);
+  color: vars.$DarkGrayishLight;
   text-decoration:line-through;
 }
 
 .task-done span {
-  color: hsl(236, 9%, 61%);
+  color: vars.$DarkGrayishLight;
   background: linear-gradient(hsl(192, 100%, 67%), hsl(280, 87%, 65%));
   border:none;
 }
@@ -82,11 +83,72 @@
 }
 
 .todo-list-container--footer p {
-    color: hsl(234, 34%, 77%);
-    cursor: pointer;
+  color: vars.$DarkGrayishLight;
+  cursor: pointer;
 
     &:hover {
-      color:  hsl(238, 12%, 55%);
+      color:  vars.$VeryDarkGrayiDark;
       transition-duration: 0.5s;
     }
 }
+
+
+// DARK MODE : 
+
+#dark .todo-list-container {
+  background-color: vars.$VeryDarkGrayishDark;
+  box-shadow: vars.$VeryDarkDark 0px 48px 100px 0px;
+
+  &--span {
+    border: 2px solid vars.$VeryDarkGrayiDark;
+    width:1rem;
+    height:1rem;
+    border-radius: 50%;
+    margin-right: 1rem;
+  }
+
+  &--element:not(:last-child) {
+    border-bottom: solid 1px vars.$VeryDarkGrayiDark;
+  }
+
+  &--task {
+    scrollbar-color:   linear-gradient(hsla(192, 100%, 67%, 0.5), hsl(280, 87%, 65%, 0.5)) vars.$DarkGrayishDark;
+    
+    &::-webkit-scrollbar {
+      width: 10px; /* Mostly for vertical scrollbars */
+      height: 10px; /* Mostly for horizontal scrollbars */
+    }
+    &::-webkit-scrollbar-thumb { /* Foreground */
+      border-top: 4px solid vars.$DarkGrayishDark;
+      background:  linear-gradient(hsl(192, 100%, 67%, 0.5), hsl(280, 87%, 65%, 0.5));
+    }
+    &::-webkit-scrollbar-track { /* Background */
+      background: vars.$DarkGrayishDark;
+    }
+  }
+
+}
+
+#dark .task-done span {
+  border:none;
+}
+
+#dark .todo-list-container  p {
+  color: vars.$VeryLightGrayishDark;
+}
+
+#dark .task-done p {
+  color: vars.$DarkGrayishDark;
+}
+
+#dark .todo-list-container--footer p {
+  color: vars.$DarkGrayishLight;
+  cursor: pointer;
+
+    &:hover {
+      color:  vars.$LightGrayishDark;
+      transition-duration: 0.5s;
+    }
+}
+
+

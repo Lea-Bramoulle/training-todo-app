@@ -5,6 +5,7 @@ export const FILTER_ACTIVE_TASKS = 'FILTER_ACTIVE_TASKS';
 export const FILTER_COMPLETED_TASKS = 'FILTER_COMPLETED_TASKS';
 export const FILTER_ALL_TASKS = 'FILTER_ALL_TASKS';
 export const CLEAR_COMPLETED_TASKS = 'CLEAR_COMPLETED_TASKS';
+export const CHANGE_THEME_MODE = 'CHANGE_THEME_MODE';
 
 export const changeTaskStatus = (taskId) => ({
   type: CHANGE_TASK_STATUS,
@@ -34,4 +35,8 @@ export const filterAllTasks = () => ({
 
 export const clearCompletedTasks = () => ({
   type: CLEAR_COMPLETED_TASKS,
+});
+
+export const changeThemeMode = () => ({
+  type: CHANGE_THEME_MODE,
 });
