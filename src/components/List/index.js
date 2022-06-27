@@ -1,8 +1,10 @@
 /* eslint-disable global-require */
 /* eslint-disable import/no-useless-path-segments */
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect  } from 'react';
-import { changeTaskStatus, filterActiveTasks, filterCompletedTasks, filterAllTasks, clearCompletedTasks } from 'src/store/action';
+import { useEffect } from 'react';
+import {
+  changeTaskStatus, filterActiveTasks, filterCompletedTasks, filterAllTasks, clearCompletedTasks,
+} from 'src/store/action';
 import './list.scss';
 
 function List() {
@@ -10,15 +12,15 @@ function List() {
   const filteredTasks = useSelector((state) => state.filteredTasks);
   const dispatch = useDispatch();
 
-  let sortedTasks = [...filteredTasks];
+  const sortedTasks = [...filteredTasks];
   sortedTasks.sort((a, b) => a.done - b.done);
 
   useEffect(() => {
     dispatch(filterAllTasks());
-  },[]);
+  }, []);
 
-  const tasksLeft = tasks.filter((task) => task.done=== false).length;
-  
+  const tasksLeft = tasks.filter((task) => task.done === false).length;
+
   return (
     <div className="todo-list-container">
       <ul className="todo-list-container--tasks">
