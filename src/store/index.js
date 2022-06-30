@@ -40,7 +40,6 @@ const initialState = {
     },
   ],
   inputValue: '',
-  // filteredTasks: [],
   themeMode: 'light',
   filterBy: 'all',
 };
@@ -73,33 +72,22 @@ const reducer = (state = initialState, action) => {
             done: false,
           },
         ],
-        // filteredTasks: [
-        //   ...state.tasks,
-        //   {
-        //     id: getHighestId(state) + 1,
-        //     content: state.inputValue,
-        //     done: false,
-        //   },
-        // ],
         inputValue: '',
       };
     case FILTER_ACTIVE_TASKS:
       return {
         ...state,
         filterBy: 'active',
-        // filteredTasks: state.tasks.filter((task) => task.done === false),
       };
     case FILTER_COMPLETED_TASKS:
       return {
         ...state,
         filterBy: 'completed',
-        // filteredTasks: state.tasks.filter((task) => task.done === true),
       };
     case FILTER_ALL_TASKS:
       return {
         ...state,
         filterBy: 'all',
-        // filteredTasks: state.tasks,
       };
     case CLEAR_COMPLETED_TASKS:
       return {
