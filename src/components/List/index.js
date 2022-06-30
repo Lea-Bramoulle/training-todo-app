@@ -9,17 +9,27 @@ import './list.scss';
 
 function List() {
   const tasks = useSelector((state) => state.tasks);
-  const filteredTasks = useSelector((state) => state.filteredTasks);
+  const filterBy = useSelector((state) => state.filterBy);
   const dispatch = useDispatch();
 
-  const sortedTasks = [...filteredTasks];
+  const tasksLeft = tasks.filter((task) => task.done === false).length;
+
+  let sortedTasks = [];
+
+  if( filterBy === 'completed') {
+    sortedTasks = [...tasks].filter((task) => task.done === true);
+  } else if (filterBy === 'active') {
+    sortedTasks = [...tasks].filter((task) => task.done === false);
+  } else {
+    sortedTasks = [...tasks];
+  }
+
   sortedTasks.sort((a, b) => a.done - b.done);
 
-  useEffect(() => {
-    dispatch(filterAllTasks());
-  }, []);
+  // useEffect(() => {
+  //   dispatch(filterAllTasks());
+  // }, []);
 
-  const tasksLeft = tasks.filter((task) => task.done === false).length;
 
   return (
     <div className="todo-list-container">

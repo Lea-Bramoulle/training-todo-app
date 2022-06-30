@@ -20,28 +20,29 @@ const initialState = {
   tasks: [
     {
       id: 1,
-      content: 'sortir les mouches',
+      content: 'Tromper mille fois une personne',
       done: true,
     },
     {
       id: 2,
-      content: 'sortir les mouches',
+      content: 'Trouver le crimier',
       done: true,
     },
     {
       id: 3,
-      content: 'sortir les mouches',
+      content: 'Souquer les archimuses',
       done: false,
     },
     {
       id: 4,
-      content: 'sortir les mouches',
+      content: 'Finir la TodoList',
       done: false,
     },
   ],
   inputValue: '',
-  filteredTasks: [],
+  // filteredTasks: [],
   themeMode: 'light',
+  filterBy: 'all',
 };
 
 const reducer = (state = initialState, action) => {
@@ -72,30 +73,33 @@ const reducer = (state = initialState, action) => {
             done: false,
           },
         ],
-        filteredTasks: [
-          ...state.tasks,
-          {
-            id: getHighestId(state) + 1,
-            content: state.inputValue,
-            done: false,
-          },
-        ],
+        // filteredTasks: [
+        //   ...state.tasks,
+        //   {
+        //     id: getHighestId(state) + 1,
+        //     content: state.inputValue,
+        //     done: false,
+        //   },
+        // ],
         inputValue: '',
       };
     case FILTER_ACTIVE_TASKS:
       return {
         ...state,
-        filteredTasks: state.tasks.filter((task) => task.done === false),
+        filterBy: 'active',
+        // filteredTasks: state.tasks.filter((task) => task.done === false),
       };
     case FILTER_COMPLETED_TASKS:
       return {
         ...state,
-        filteredTasks: state.tasks.filter((task) => task.done === true),
+        filterBy: 'completed',
+        // filteredTasks: state.tasks.filter((task) => task.done === true),
       };
     case FILTER_ALL_TASKS:
       return {
         ...state,
-        filteredTasks: state.tasks,
+        filterBy: 'all',
+        // filteredTasks: state.tasks,
       };
     case CLEAR_COMPLETED_TASKS:
       return {
